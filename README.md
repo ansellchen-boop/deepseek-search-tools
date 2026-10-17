@@ -55,7 +55,13 @@ dsh plugin --profile web add deepseek-search-tools
 ### 从 GitHub
 
 ```bash
-dsh plugin --profile web add github:<owner>/deepseek-search-tools
+dsh plugin --profile web add github:ansellchen-boop/deepseek-search-tools
+```
+
+也可以直接装 release 附件（pnpm 支持 tarball 与 URL）：
+
+```bash
+dsh plugin --profile web add https://github.com/ansellchen-boop/deepseek-search-tools/releases/download/v0.1.0/deepseek-search-tools-0.1.0.tgz
 ```
 
 ### 启用 bundle

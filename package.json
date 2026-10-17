@@ -14,13 +14,13 @@
   ],
   "license": "MIT",
   "author": "deepseek-search-tools contributors",
-  "homepage": "https://github.com/OWNER/deepseek-search-tools#readme",
+  "homepage": "https://github.com/ansellchen-boop/deepseek-search-tools#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/deepseek-search-tools.git"
+    "url": "git+https://github.com/ansellchen-boop/deepseek-search-tools.git"
   },
   "bugs": {
-    "url": "https://github.com/OWNER/deepseek-search-tools/issues"
+    "url": "https://github.com/ansellchen-boop/deepseek-search-tools/issues"
   },
   "main": "lib/index.js",
   "exports": {
