@@ -40,6 +40,12 @@ API 文档：<https://api-docs.deepseek.com/zh-cn/guides/search>　计费：搜�
 
 ## 安装
 
+> 前置：`dsh plugin` 只是把参数转发给 **pnpm**，所以 `pnpm` 必须在 `PATH` 里（`npm i -g pnpm`）。
+> DSH 桌面版自带一份 pnpm（`resources/runtime/pnpm`），但不会注入终端 `PATH`，命令行安装需要自己装。
+>
+> 名称说明：npm 上 `searchtools` 已被占用，本包发布名是 **`deepseek-search-tools`**；
+> 安装命令里的标识就是这个包名。
+
 ### 从 npm（推荐）
 
 ```bash

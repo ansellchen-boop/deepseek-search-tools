@@ -1,6 +1,8 @@
-node_modules/
+﻿node_modules/
 usage.json
 *.log
 .DS_Store
 Thumbs.db
 _dsh-*.mjs
+
+*.tgz
