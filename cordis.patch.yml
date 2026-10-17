@@ -1,0 +1,48 @@
+# deepseek-search-tools — bundle patch for a dsh profile.
+#
+# Registers the DeepSeek Search / Fetch REST API
+#   POST https://api.deepseek.com/v1/tools/search
+#   POST https://api.deepseek.com/v1/tools/fetch
+# as two `ctx.web` providers (ids: deepseek-tools). The shipped
+# `web_search` / `web_fetch` tools then serve from this API.
+#
+# Insert layer: the plugin row itself.
+
+- insert:
+    - id: web-search-deepseek-tools
+      name: deepseek-search-tools
+      # Every option has a default, so the row works as-is. To override any of
+      # them, add a `config:` mapping under this entry with e.g.:
+      #   config:
+      #     apiKeyEnv: DEEPSEEK_API_KEY   # credential name to resolve
+      #     baseUrl: https://api.deepseek.com
+      #     searchPath: /v1/tools/search
+      #     fetchPath: /v1/tools/fetch
+      #     localization: ""              # IP hint for localized results
+      #     includeContent: false         # search: also return page bodies
+      #     fetchFallback: true           # web_fetch: fall back to plain HTTP
+      #     takeOverSearch: true          # claim web.searchProvider if unowned
+      #     takeOverFetch: true           # claim web.fetchProvider if unowned
+      #     timeoutMs: 60000
+      #     maxSourceChars: 4000
+      #     apiKey: ""                    # literal key; leave empty in real rows
+
+# Selection layer: none.
+#
+# The plugin claims `web.searchProvider` / `web.fetchProvider` at apply time:
+# unset, still the shipped default (`deepseek-official` / `http`), or a
+# third-party default it explicitly supersedes (`web-search-free` /
+# `fs-quality-fetch`, which `dsh-free-search` only claims because nothing
+# better was registered). An explicit pin to any other id is respected.
+#
+# Deliberately NOT pinned here: a `- id: web / config: / searchProvider: ...`
+# row is written into the composed config, and it outlives the plugin — if this
+# bundle ever fails to load, every web call then dies with
+# `configured web provider "deepseek-tools" is not registered`. Runtime
+# takeover degrades gracefully instead (the previous provider keeps serving).
+# Pin it yourself only if you want a missing plugin to fail loudly:
+#
+#   - id: web
+#     config:
+#       searchProvider: deepseek-tools
+#       fetchProvider: deepseek-tools   # omit to keep the plain HTTP fetcher
