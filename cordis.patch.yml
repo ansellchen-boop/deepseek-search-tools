@@ -26,6 +26,34 @@
       #     timeoutMs: 60000
       #     maxSourceChars: 4000
       #     apiKey: ""                    # literal key; leave empty in real rows
+#
+# v0.2.0 — per-half backend lists (leave both empty to keep the 0.1.0 chain):
+#   searchBackends:                 # search vendors, smallest priority first
+#     - id: zhipu
+#       type: zhipu-web-search      # deepseek-official | zhipu-web-search |
+#                                   # openai-responses | tavily | searxng | brave
+#       enabled: true
+#       priority: 1
+#       apiKeyEnv: ZHIPU_API_KEY
+#       engine: search_std
+#     - id: deepseek
+#       type: deepseek-official
+#       priority: 2
+#       apiKeyEnv: DEEPSEEK_API_KEY
+#   fetchBackends:                  # fetch vendors: deepseek-official |
+#                                   # jina-reader | tavily-extract | http
+#     - id: jina
+#       type: jina-reader
+#       priority: 1
+#     - id: http
+#       type: http
+#       priority: 2
+#   searchBackend: ""               # "" = automatic chain; else pin an id
+#   fetchBackend: ""                # independent from searchBackend
+#
+# A pin never falls back: its failure is reported as the real error. An
+# automatic chain falls back only when the next backend has a usable credential
+# source (the 0.1.0 graceful-credential-handoff behavior).
 
 # Selection layer: none.
 #
