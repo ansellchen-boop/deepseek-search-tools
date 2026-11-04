@@ -1,8 +1,8 @@
 {
   "name": "deepseek-search-tools",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "type": "module",
-  "description": "DeepSeek Search / Fetch REST API (/v1/tools/search, /v1/tools/fetch) as DSH web providers, so web_search and web_fetch answer from the dedicated Tools API instead of a full model turn.",
+  "description": "DeepSeek Search / Fetch REST API (/v1/tools/search, /v1/tools/fetch) as DSH web providers — plus a configuration-driven multi-vendor backend list (Zhipu, OpenAI Responses web_search, Tavily, Jina Reader, SearXNG, Brave, plain HTTP).",
   "keywords": [
     "deepseek-harness",
     "deepseek-harness-plugins",
@@ -32,8 +32,12 @@
     "lib/index.js",
     "lib/client.js",
     "lib/bridge.js",
+    "lib/backend-types.js",
     "lib/usage.js",
+    "lib/usage-guide.js",
     "cordis.patch.yml",
+    "docs/USAGE.md",
+    "docs/USAGE.zh.md",
     "README.md",
     "LICENSE"
   ],
